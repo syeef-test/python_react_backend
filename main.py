@@ -2,7 +2,9 @@ from flask import request,jsonify
 from config import app,db
 from models import Employee
 
-
+@app.route('/')
+def hello_world():
+	return 'Welcome to employ management'
 
 # Get all employess
 @app.route("/get_employees",methods=["GET"])
