@@ -9,7 +9,7 @@ from models import Employee
 def get_employees():
     employees = Employee.query.all()
     json_employess = list(map(lambda x:x.to_json(),employees))
-    return jsonify({"employess":json_employess})
+    return jsonify({"employees":json_employess})
 
 #Create employess
 @app.route("/create_employee",methods=["POST"])
@@ -40,6 +40,7 @@ def update_employee(emp_id):
     if not employee:
         return (jsonify({"message":"Employee details not found"}),404)
     data = request.json
+    #console.log(data)
     employee.name = data.get("name",employee.name)
     employee.email = data.get("email",employee.email)
     employee.designation = data.get("designation",employee.designation)
